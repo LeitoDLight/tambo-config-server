@@ -1,0 +1,4 @@
+# Configuración propia de auth-service
+app:
+  jwt:
+    expiracion-minutos: 120   # vigencia del token

@@ -1,0 +1,23 @@
+# CONFIGURACIÓN COMPARTIDA: la reciben TODOS los servicios (auth, catalogo, ventas y alertas).
+# Antes, cada servicio repetía estos valores en su propio application.yaml.
+spring:
+  datasource:
+    username: tambo
+    password: tambo123
+  jpa:
+    hibernate:
+      ddl-auto: update
+  rabbitmq:
+    port: 5672
+    username: tambo
+    password: tambo123
+    listener:
+      simple:
+        default-requeue-rejected: false
+app:
+  jwt:
+    # Secreto con el que se firman y validan los tokens: debe ser el mismo en los 4 servicios,
+    # por eso conviene tenerlo en un solo lugar.
+    secret: tambo-market-clave-secreta-cibertec-2026-minimo-32
+# Nota: lo que depende del entorno (hosts de la base de datos y RabbitMQ, URL del catálogo)
+# sigue llegando por variables de entorno de Docker Compose.

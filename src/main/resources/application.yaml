@@ -1,0 +1,17 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  profiles:
+    # "native": la configuración se lee de archivos del propio servidor (carpeta config/)
+    active: native
+  cloud:
+    # Spring Cloud 2025.1 está certificado para Boot 4.0; con Boot 4.1 se desactiva solo la verificación
+    compatibility-verifier:
+      enabled: false
+    config:
+      server:
+        native:
+          # Carpeta con los archivos de configuración que se entregan a los servicios
+          search-locations: classpath:/config
